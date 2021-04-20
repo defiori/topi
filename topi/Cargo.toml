@@ -1,0 +1,33 @@
+[package]
+name = "topi"
+version = "0.1.0"
+authors = ["defiori"]
+license = "MPL-2.0"
+edition = "2018"
+build = "build.rs"
+
+[features]
+default = ["python-node", "c-node"]
+test-mode = []
+# Determines whether the specified nodes can be run in the main process
+python-node = ["topi_node_python"]
+c-node = ["topi_node_c"]
+# Should topi run `cargo install topi_proc` as part of the build process?
+cargo-install-topi-proc=[]
+cargo-install-topi-proc-local=[]
+
+[dependencies]
+serde = {version = "^1.0", features=["derive"]}
+toml = { version = "^0.5.8"}
+topi_base = { path = "../topi_base", version = "^0.1.0"}
+topi_node_python = { path = "../topi_node_python",  version = "^0.1.0", optional = true}
+topi_node_c = { path = "../topi_node_c",  version = "^0.1.0", optional = true}
+
+[dev-dependencies]
+crossbeam-channel = "^0.4.2"
+criterion = "^0.3"
+serde = {version = "^1.0", features=["derive"]}
+
+[[bench]]
+name = "shared_v_serialized"
+harness = false

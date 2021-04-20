@@ -1,0 +1,25 @@
+# Global settings
+# The following keys are not required and shown with their default values
+
+# Determines whether two Python nodes can run in separate threads of the same process.
+# Due to the GIL this is generally not safe.
+python_thread_safe = false
+
+# Run topi in debug mode.
+debug_mode = false
+
+[[python]]
+# Required keys
+node_id = "py1"
+path = "./python_tests/tests.py"
+# The following keys are not required and shown with their default values
+# A process id of -1 means topi will run the node as the main thread in its own process. A value
+# of 0 assigns the node to a separate thread in the main process, values > 0 run the node thread
+# in the specified process. Process ids > -1 are only accepted if allowed by the global thread 
+# safety setting of the language, here python_thread_safe.
+process_id = -1
+# If true, the node is run as the main thread in its process. This is not allowed if assigning 
+# the node to the main process, i.e. if `process_id` is 0. Only one node per process can run in
+# the main thread. A `process_id` value of -1 automatically runs the node as the main thread and
+# cannot be combined with `main_thread_in_process` set to false.
+main_thread_in_process = true

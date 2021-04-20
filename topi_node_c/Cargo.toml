@@ -1,0 +1,14 @@
+[package]
+name = "topi_node_c"
+version = "0.1.0"
+authors = ["defiori"]
+license = "MPL-2.0"
+edition = "2018"
+
+[dependencies]
+topi_base = { path = "../topi_base", version = "^0.1.0"}
+libloading = "^0.6.3"
+
+[[example]]
+name = "simple_c"
+path = "examples/simple.rs"

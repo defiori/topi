@@ -1,0 +1,26 @@
+[package]
+name = "topi_proc"
+version = "0.1.0"
+authors = ["defiori"]
+license = "MPL-2.0"
+edition = "2018"
+
+[features]
+default = ["python-node", "c-node"]
+python-node = ["topi_node_python", "topi/python-node"]
+c-node = ["topi_node_c", "topi/c-node"]
+called-from-python = ["topi_node_python/called-from-python"]
+
+[dependencies]
+structopt = "^0.3.14"
+serde = "^1.0"
+topi = { path = "../topi", version = "^0.1.0", default-features = false}
+topi_base = { path = "../topi_base", version = "^0.1.0"}
+topi_node_python = { path = "../topi_node_python",  version = "^0.1.0", optional = true}
+topi_node_c = { path = "../topi_node_c",  version = "^0.1.0", optional = true}
+
+[[bin]]
+name = "topi_proc"
+
+[[bin]]
+name = "topi_proc_test"

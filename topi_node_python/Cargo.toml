@@ -1,0 +1,22 @@
+[package]
+name = "topi_node_python"
+version = "0.1.0"
+authors = ["defiori"]
+license = "MPL-2.0"
+edition = "2018"
+
+[features]
+default = ["node"]
+node = []
+called-from-python = []
+
+[dependencies]
+topi_base = { path = "../topi_base", version = "^0.1.0"}
+pyo3 = "^0.13"
+numpy = "^0.13"
+indoc = "^1.0"
+topi_internal_macros = { path = "../topi_internal_macros", version = "^0.1.0"}
+
+[[example]]
+name = "simple_python"
+path = "examples/simple.rs"

@@ -1,0 +1,22 @@
+[package]
+name = "topi_base"
+version = "0.1.0"
+authors = ["defiori"]
+license = "MPL-2.0"
+edition = "2018"
+
+[features]
+default = ["data", "test-mode"]
+data = ["ndarray"]
+# This currently needs to be a default feature because it can't be activated in the
+# test profile for unit tests, see https://github.com/rust-lang/cargo/issues/2911
+test-mode = []
+
+[dependencies]
+serde = {version = "^1.0", features = ["derive"]}
+crossbeam-channel = "^0.4.2"
+ipc-channel = "^0.14.1"
+bincode = "^1"
+sharify = "^0.1.0"
+topi_internal_macros = { path = "../topi_internal_macros", version = "^0.1.0" }
+ndarray = { version = "^0.14", features=["serde"], optional = true }

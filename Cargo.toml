@@ -1,0 +1,2 @@
+[workspace]
+members = ["topi", "topi_base", "topi_proc", "topi_node_python", "topi_node_c", "topi_internal_macros"]
